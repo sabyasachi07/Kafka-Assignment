@@ -1,0 +1,65 @@
+step 1: Update & Install Dependencies
+	
+	sudo apt update && sudo apt upgrade -y
+	sudo apt install openjdk-11-jdk wget net-tools -y
+	java --version
+	
+step 2: Install and configure Zookeeper
+  	
+  	Download zookeper binary file
+	 - wget https://archive.apache.org/dist/zookeeper/zookeeper-3.8.0/apache-zookeeper-3.8.0-bin.tar.gz
+	Extract the  zookeeper tar file
+	 - tar -xvzf apache-zookeeper-3.8.0-bin.tar.gz
+	Moving extracted package to zookeeper folder
+	 - sudo mv apache-zookeeper-3.8.0-bin /opt/zookeeper
+	Create a Zookeeper data directory
+	 - sudo mkdir -p /data/zookeeper
+	Rename zoo_sample.cfg to zoo.cfg present
+	 - cp /opt/zookeeper/conf/zoo_sample.cfg /opt/zookeeper/conf/zoo.cfg
+	update following settings in zoo.cfg file 
+	 - dataDir=/data/zookeeper
+	  
+step 3: Start Zookeeper:
+        
+        command to start zookeeper
+        	/opt/zookeeper/bin/zkServer.sh start
+        To check zookeeper is running or not 
+               ps -ef | grep zookeeper or /opt/zookeeper/bin/zkServer.sh status
+           
+      
+step 4: Install and configure Broker:
+	
+	Download Broker binary file
+	 - wget https://archive.apache.org/dist/kafka/3.5.1/kafka_2.13-3.5.1.tgz
+	Extract the  Broker tar file
+	 - tar -xvzf kafka_2.13-3.5.1.tgz
+	Moving extracted package to broker folder
+	 - sudo mv kafka_2.13-3.5.1 /opt/kafka
+	Create Kafka broker data directories
+	 - sudo mkdir -p /data/kafka-logs
+	Update the following settings in server.properties file present in /opt/confluent/bin
+	  - broker.id=0 # Unique for each broker (e.g., 1, 2, 3)
+	  - log.dirs=/data/kafka-logs
+	  - zookeeper.connect=<zookeeper_ip>:2181
+      	  - listeners=PLAINTEXT://<broker_ip>:9092
+
+step 5: Start Kafka:
+	
+	command to start broker
+	 - /opt/kafka/bin/kafka-server-start.sh -daemon /opt/kafka/config/server.properties
+	To check zookeeper is running or not use below command
+	 - ps -ef | grep kafka
+
+step 6: Verify the Setup :
+
+	Enter into zookeeper
+	- /opt/zookeeper/bin/zkCli.sh -server <zookeeper_ip>:2181
+	Check the list of active brokers
+	- ls /brokers/ids
+	Describe the given active broker id
+	- get /brokers/ids/<broker_id>
+
+	
+		
+	
+
