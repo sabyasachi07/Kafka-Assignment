@@ -1,0 +1,36 @@
+we were using jks truststore and keystore
+
+Marketplace Workflow:
+	In marketplace by filling  details and proper reasons we get the csr
+
+prechecks :
+	check for SAN name and CN name of the provided crt.
+
+Engineering Team's Process:
+	The engineering team typically provides a public key when we provide the crt. to them
+   
+Conversion Workflow to create jks:
+    For user-provided certificates:
+        Convert .b64 → .p12 → .jks using openssl.
+     For service-generated certificates:
+        Convert .pem → .p12 → .jks using openssl.
+
+Using Keytool to Verify SAN and CN:
+
+    We use keytool command  to inspect the certificate and verify the SAN and CN values.
+    The processed certificates are placed in the designated security folder.
+
+Configuration that needs to be changed in server.properties for SASL cofiguration
+
+	- listeners=PLAINTEXT://:9092,SASL_SSL://:9093
+	- advertised.listeners=PLAINTEXT://host_ip:9092,SASL_SSL://host_ip:9093
+	- listener.security.protocol.map=PLAINTEXT:PLAINTEXT,SASL_SSL:SASL_SSL
+	- inter.broker.listener.name=SASL_SSL
+	- sasl.mechanism.inter.broker.protocol=PLAIN    
+
+Configuration that needs to be changed in server.properties for SSL cofiguration    
+	- ssl.keystore.location=/path/to/keystore.jks
+	- ssl.keystore.password=keystore-password
+	- ssl.key.password=key-password
+	- ssl.truststore.location=/path/to/truststore.jks
+	- ssl.truststore.password=truststore-password

@@ -1,0 +1,18 @@
+To optimize the performance of kafka cluster we optimize the performance in three level
+1) producer level
+2) Broker level
+3) Consumer level
+
+For producer level :-
+ request.received.acks = 0 (No acknowledgment)
+ 			 1  (producer gets acknowledgment after leader replica gets data)
+ 			 all (producer gets acknowledgment after all in-sync replicas gets message)
+ 			 
+ 			 enable.idempotent=true to avoid duplicate messages
+ 			 
+ For broker level :-
+  Always plan for high number of partitions or num.partitions to be increased for better paralleleism.
+  Adjust log.retention.hours depending upon disk space and the client need.
+
+ For consumer level :-
+  Check for max.poll.records and fetch.min.bytes and adjust according to your requirements and addding more consumer groups.

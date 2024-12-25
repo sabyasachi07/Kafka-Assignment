@@ -1,8 +1,10 @@
+To setup 3 brokers and 1 zookeepers
+
 step 1: Update & Install Dependencies
 	
-	sudo apt update && sudo apt upgrade -y
-	sudo apt install openjdk-11-jdk wget net-tools -y
-	java --version
+	 - sudo apt update && sudo apt upgrade -y
+	 - sudo apt install openjdk-11-jdk wget net-tools -y
+	 - java --version (To check is properly installed or not)
 	
 step 2: Install and configure Zookeeper
   	
@@ -22,9 +24,9 @@ step 2: Install and configure Zookeeper
 step 3: Start Zookeeper:
         
         command to start zookeeper
-        	/opt/zookeeper/bin/zkServer.sh start
+         - /opt/zookeeper/bin/zkServer.sh start
         To check zookeeper is running or not 
-               ps -ef | grep zookeeper or /opt/zookeeper/bin/zkServer.sh status
+         - ps -ef | grep zookeeper or /opt/zookeeper/bin/zkServer.sh status
            
       
 step 4: Install and configure Broker:

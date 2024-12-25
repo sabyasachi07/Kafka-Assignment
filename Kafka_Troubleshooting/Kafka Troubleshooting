@@ -1,0 +1,12 @@
+If one of the broker is down these re necessary steps to be followed
+
+1. Review the logs using cat or vi
+2. Ensure there is proper disk space, free memory and heap size is available or not.
+
+
+Resolution :- 
+1. If disk space is mostly occupied then zip the log files that are not currently used.
+2. Restart the broker Services and check the logs to get the exact reason of failure using tail command to get current logs.
+
+
+

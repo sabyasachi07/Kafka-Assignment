@@ -1,0 +1,22 @@
+>>creating 1st topic topicA
+./kafka-topics.sh --create --bootstrap-server 172.31.45.120:9092,172.31.36.243:9092,172.31.43.216:9092 --replication-factor 3 --partitions 6 --topic topicA
+
+>>creating 2nd topic topicB
+./kafka-topics.sh --create --bootstrap-server 172.31.45.120:9092,172.31.36.243:9092,172.31.43.216:9092 --replication-factor 1 --partitions 2 --topic topicB
+
+>>To produce messages
+./kafka-console-producer.sh --bootstrap-server 172.31.45.120:9092,172.31.36.243:9092,172.31.43.216:9092 --topic topicA 
+
+>>To consume messages from beginning
+./kafka-console-consumer.sh --bootstrap-server 172.31.45.120:9092,172.31.36.243:9092,172.31.43.216:9092 --topic topicA --from-beginning
+
+>>script to publish 1000 messages in topicA and topicB
+for i in {1..1001}; do
+    echo $i
+done | ./kafka-console-producer.sh --bootstrap-server 172.31.45.120:9092,172.31.36.243:9092,172.31.43.216:9092 --topic topicA
+
+for i in {1..1001}; do
+    echo $i
+done | ./kafka-console-producer.sh --bootstrap-server 172.31.45.120:9092,172.31.36.243:9092,172.31.43.216:9092 --topic topicB
+
+
