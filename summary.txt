@@ -1,0 +1,23 @@
+Summary of the assignment
+
+Cluster Setup :
+	1. 1st created the setup for 1 zookeeper and 3 broker, then installed all the pre-requisites to install kafka.
+	2. Then I installed kafka zookeeper started the zookeper services then did all the post checks to validate all the services.
+	3. After that I installed 1st broker, then started the broker server then did all the validation from both server and zookeeper side to see zookeeper and broker are working smoothly or not.
+	4. At last I completed the setup for repeating the step 3 for rest 2 brokers.
+	
+Topic Creation and data flow :
+  	1. I created two topics as given in the configuration chart.
+	2. To validate topic are created or not I described and listed the topics in the broker.
+	3. To check the data flow in a topic I used producer and consumer command to see the data are publishing and consuming of a topic.
+	4. I addded a scrip to publish 1000 messages for two topics.
+	
+Kafka performance Tuning :
+	1. I added some properties and conditions that we use in real time scenarios for performance tuning, conccurrency and paralleleism.
+	
+Kakfa Troubleshooting :
+	1. With given scenario in assesment I added what prechecks and postchecks needs to be done to tackle this issue.
+	
+Kafka Security :
+	1. I added the steps what pre-requisites needs to be done to generate the keystore.
+	2. With configuration changes in server.properties for both sasl and ssl, I completed setting up security for kafka.

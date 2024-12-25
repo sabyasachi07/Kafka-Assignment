@@ -3,10 +3,10 @@ we were using jks truststore and keystore
 >> Steps to create and verify keystore
 
 Marketplace Workflow:
-	In marketplace by filling  details and proper reasons we get the csr
+	In the marketplace, we provide the CSR (Certificate Signing Request) with valid reasons and complete details to ensure it is approved as authorized.
 
 prechecks :
-	check for SAN name and CN name of the provided crt.
+	Check for SAN name and CN name of the provided crt.
 
 Engineering Team's Process:
 	The engineering team typically provides a public key when we provide the crt. to them
