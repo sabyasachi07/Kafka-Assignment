@@ -1,5 +1,7 @@
 we were using jks truststore and keystore
 
+>> Steps to create and verify keystore
+
 Marketplace Workflow:
 	In marketplace by filling  details and proper reasons we get the csr
 
@@ -19,6 +21,8 @@ Using Keytool to Verify SAN and CN:
 
     We use keytool command  to inspect the certificate and verify the SAN and CN values.
     The processed certificates are placed in the designated security folder.
+
+>> Setting the SASL and SSL configuration in server.properties
 
 Configuration that needs to be changed in server.properties for SASL cofiguration
 
